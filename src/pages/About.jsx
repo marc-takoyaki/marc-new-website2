@@ -10,6 +10,13 @@ export default function About({ setPage, current }) {
     "Figma & Prototyping",
   ]
 
+  const viteBase = (() => {
+    let b = import.meta.env.BASE_URL || "/"
+    if (!b.startsWith("/")) b = "/" + b
+    if (!b.endsWith("/")) b = b + "/"
+    return b
+  })()
+
   
   const languages = ["Java", "Python", "PHP", "JavaScript", "MySQL"]
 
@@ -67,7 +74,7 @@ export default function About({ setPage, current }) {
           >
             <div className="rounded-2xl overflow-hidden shadow-2xl bg-white w-full max-w-sm">
               <img
-                src="/images/profile.jpg"
+                src={viteBase + "images/profile.jpg"}
                 alt="Marc portrait"
                 className="w-full h-full object-cover cursor-pointer transition-transform duration-300 hover:scale-105"
                 onClick={() => (window.location.href = "../index.html")}
@@ -164,3 +171,4 @@ export default function About({ setPage, current }) {
     </div>
   )
 }
+
